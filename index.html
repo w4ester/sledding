@@ -13,6 +13,10 @@
             --shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background: linear-gradient(to bottom, #83a4d4, #b6fbff);
@@ -23,7 +27,6 @@
             overflow-x: hidden;
         }
 
-        /* Snow Animation Container */
         #snow-container {
             position: fixed;
             top: 0;
@@ -32,6 +35,7 @@
             height: 100%;
             pointer-events: none;
             z-index: 0;
+            overflow: hidden;
         }
 
         .container {
@@ -116,7 +120,20 @@
             text-align: center;
             text-decoration: none;
             font-size: 1rem;
-            transition: opacity 0.2s;
+            transition: opacity 0.2s, transform 0.1s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn:focus-visible {
+            outline: 3px solid #2980b9;
+            outline-offset: 2px;
         }
 
         .btn-vote {
@@ -140,6 +157,29 @@
             font-size: 0.95rem;
         }
 
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            z-index: 1000;
+            opacity: 0;
+            transition: transform 0.3s, opacity 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 90%;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
         .snowflake {
             position: absolute;
             color: white;
@@ -147,103 +187,176 @@
             animation-name: fall;
             animation-timing-function: linear;
             animation-iteration-count: infinite;
+            top: -20px;
         }
 
         @keyframes fall {
-            to { transform: translateY(100vh); }
+            to { transform: translateY(calc(100vh + 40px)); }
         }
 
+        @media (prefers-reduced-motion: reduce) {
+            .snowflake {
+                animation: none;
+                display: none;
+            }
+            .card:hover {
+                transform: none;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div id="snow-container"></div>
+    <div id="snow-container" aria-hidden="true"></div>
 
     <div class="container">
         <header>
             <h1>🛷 Sledding Bulletin</h1>
-            <div class="status-badge">STATUS: GO FOR LAUNCH 🚀</div>
+            <div class="status-badge" role="status">STATUS: GO FOR LAUNCH 🚀</div>
         </header>
 
-        <div class="mission-box">
-            <p><strong>The Mission:</strong> Get the kiddos (Gideon, Abel & friends) on a hill, get them exhausted, and earn that hot chocolate. ☕️</p>
-            <p>City snow is thin, so we are looking just North. <strong>Vote for a spot below!</strong></p>
-        </div>
+        <main>
+            <div class="mission-box">
+                <p><strong>The Mission:</strong> Get the kiddos (Gideon, Abel & friends) on a hill, get them exhausted, and earn that hot chocolate. ☕️</p>
+                <p>City snow is thin, so we are looking just North. <strong>Tap a button to vote, then paste in the group chat!</strong></p>
+            </div>
 
-        <div class="card">
-            <h3>📍 The Greenwood Giant</h3>
-            <span class="address">Board of Ed • 6901 N Charles St, Towson</span>
-            <p><strong>Why:</strong> The "Legendary" hill. Long, steep, and the best run in the county.</p>
-            <p><em>Note: Watch out for the ditch at the bottom!</em></p>
-            <a href="#" class="btn btn-vote" onclick="sendText('The Greenwood Giant')">I'm In: Vote Greenwood ❄️</a>
-        </div>
+            <div class="card">
+                <h3>📍 The Greenwood Giant</h3>
+                <span class="address">Board of Ed • 6901 N Charles St, Towson</span>
+                <p><strong>Why:</strong> The "Legendary" hill. Long, steep, and the best run in the county.</p>
+                <p><em>Note: Watch out for the ditch at the bottom!</em></p>
+                <button class="btn btn-vote" data-location="Greenwood Giant">I'm In: Vote Greenwood ❄️</button>
+            </div>
 
-        <div class="card">
-            <h3>📍 The Suburban Bowl</h3>
-            <span class="address">Dumbarton Middle • 300 Dumbarton Rd</span>
-            <p><strong>Why:</strong> Great bowl shape, holds snow well. Usually less chaotic and more kid-friendly.</p>
-            <a href="#" class="btn btn-vote" onclick="sendText('Dumbarton Middle')">I'm In: Vote Dumbarton ❄️</a>
-        </div>
+            <div class="card">
+                <h3>📍 The Suburban Bowl</h3>
+                <span class="address">Dumbarton Middle • 300 Dumbarton Rd</span>
+                <p><strong>Why:</strong> Great bowl shape, holds snow well. Usually less chaotic and more kid-friendly.</p>
+                <button class="btn btn-vote" data-location="Dumbarton Middle">I'm In: Vote Dumbarton ❄️</button>
+            </div>
 
-        <div class="card">
-            <h3>📍 The Falls Rd Flyer</h3>
-            <span class="address">Poly/Western • 1400 W Cold Spring Ln</span>
-            <p><strong>Why:</strong> Massive, wide hills near Eddie's. Fast runs and closer to home.</p>
-            <a href="#" class="btn btn-vote" onclick="sendText('Poly/Western')">I'm In: Vote Poly/Western ❄️</a>
-        </div>
+            <div class="card">
+                <h3>📍 The Falls Rd Flyer</h3>
+                <span class="address">Poly/Western • 1400 W Cold Spring Ln</span>
+                <p><strong>Why:</strong> Massive, wide hills near Eddie's. Fast runs and closer to home.</p>
+                <button class="btn btn-vote" data-location="Poly/Western">I'm In: Vote Poly/Western ❄️</button>
+            </div>
 
-        <div class="warning-box">
-            <strong>⚠️ Safety Briefing:</strong> It is A BRICK out there. Temps in the 20s with single-digit wind chills. Bundle the kids up like marshmallows!
-        </div>
+            <div class="warning-box" role="alert">
+                <strong>⚠️ Safety Briefing:</strong> It is A BRICK out there. Temps in the 20s with single-digit wind chills. Bundle the kids up like marshmallows!
+            </div>
 
-        <button class="btn btn-copy" onclick="copyInvite()">📋 Copy Invite Text for Group Chat</button>
-
+            <button class="btn btn-copy" id="copy-btn">📋 Copy Full Invite for Another Group</button>
+        </main>
     </div>
 
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
     <script>
-        // --- CONFIGURATION ---
-        // ENTER YOUR PHONE NUMBER HERE inside the quotes (e.g. "14105550199")
-        // If left blank, it will just open the SMS app without a recipient.
-        const HOST_PHONE_NUMBER = ""; 
-        
-        // --- SMS LOGIC ---
-        function sendText(location) {
-            const body = `I'm in for sledding! I vote for ${location}.`;
-            // Detect iOS vs Android for correct SMS link formatting
-            const ua = navigator.userAgent.toLowerCase();
-            const separator = (ua.indexOf("iphone") > -1 || ua.indexOf("ipad") > -1) ? "&" : "?";
+        // --- TOAST NOTIFICATION ---
+        function showToast(message, duration = 3000) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
             
-            window.location.href = `sms:${HOST_PHONE_NUMBER}${separator}body=${encodeURIComponent(body)}`;
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, duration);
         }
 
-        // --- COPY TO CLIPBOARD LOGIC ---
-        function copyInvite() {
-            const text = `🚨 SLEDDING BULLETIN 🚨\n\nIs anyone brave enough to face the freeze? 🥶\n\nI’m taking Gideon & Abel out—we're debating between these three spots:\n\n1. Greenwood Giant (Towson): Long, steep, legendary.\n2. Dumbarton Middle (Towson): Kid-friendly bowl.\n3. Poly/Western (Falls Rd): Steep & close to home.\n\n⚠️ It is BRICK out there. Bundle up!\n\nWho is in? Text me! 🛷☕️`;
-            
-            navigator.clipboard.writeText(text).then(() => {
-                alert("Invite copied! You can now paste it into your group chat.");
-            });
+        // --- COPY LOGIC ---
+        async function copyToClipboard(text, successMessage) {
+            try {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    await navigator.clipboard.writeText(text);
+                    showToast(successMessage);
+                } else {
+                    fallbackCopy(text, successMessage);
+                }
+            } catch (err) {
+                fallbackCopy(text, successMessage);
+            }
         }
+
+        function fallbackCopy(text, successMessage) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.focus();
+            textarea.select();
+            
+            try {
+                const success = document.execCommand('copy');
+                showToast(success ? successMessage : "❌ Copy failed — try again");
+            } catch (err) {
+                showToast("❌ Copy failed — try again");
+            }
+            
+            document.body.removeChild(textarea);
+        }
+
+        // --- VOTE ---
+        function vote(location) {
+            const text = `🛷 I'm in! My vote: ${location}`;
+            copyToClipboard(text, "✅ Copied! Flip back to the chat and paste.");
+        }
+
+        // --- FULL INVITE ---
+        function copyInvite() {
+            const text = `🚨 SLEDDING BULLETIN 🚨
+
+Is anyone brave enough to face the freeze? 🥶
+
+I'm taking Gideon & Abel out—we're debating between these three spots:
+
+1. Greenwood Giant (Towson): Long, steep, legendary.
+2. Dumbarton Middle (Towson): Kid-friendly bowl.
+3. Poly/Western (Falls Rd): Steep & close to home.
+
+⚠️ It is BRICK out there. Bundle up!
+
+Who is in? Text me! 🛷☕️`;
+            
+            copyToClipboard(text, "✅ Invite copied!");
+        }
+
+        // --- EVENT LISTENERS ---
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.btn-vote').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    vote(this.dataset.location);
+                });
+            });
+
+            document.getElementById('copy-btn').addEventListener('click', copyInvite);
+
+            initSnow();
+        });
 
         // --- SNOW ANIMATION ---
-        document.addEventListener("DOMContentLoaded", function() {
-            const snowContainer = document.getElementById("snow-container");
-            const snowflakeCount = 50;
+        function initSnow() {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-            for (let i = 0; i < snowflakeCount; i++) {
-                let snowflake = document.createElement("div");
-                snowflake.className = "snowflake";
-                snowflake.innerHTML = "❄";
-                
-                // Random positioning and timing
-                snowflake.style.left = Math.random() * 100 + "vw";
-                snowflake.style.animationDuration = (Math.random() * 3 + 2) + "s";
-                snowflake.style.opacity = Math.random();
-                snowflake.style.fontSize = (Math.random() * 10 + 10) + "px";
-                
-                snowContainer.appendChild(snowflake);
+            const container = document.getElementById('snow-container');
+            for (let i = 0; i < 40; i++) {
+                const flake = document.createElement('div');
+                flake.className = 'snowflake';
+                flake.textContent = '❄';
+                resetSnowflake(flake);
+                flake.addEventListener('animationiteration', () => resetSnowflake(flake));
+                container.appendChild(flake);
             }
-        });
+        }
+
+        function resetSnowflake(flake) {
+            flake.style.left = Math.random() * 100 + 'vw';
+            flake.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            flake.style.opacity = Math.random() * 0.7 + 0.3;
+            flake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+        }
     </script>
 </body>
 </html>
