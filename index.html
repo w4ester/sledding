@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,350 +14,340 @@
             --shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        * {
-            box-sizing: border-box;
-        }
+```
+    * {
+        box-sizing: border-box;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(to bottom, #83a4d4, #b6fbff);
-            color: var(--primary);
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background: linear-gradient(to bottom, #6b7b8c, #9aa7b4, #c8d3dc, #e8eef2);
+        color: var(--primary);
+        margin: 0;
+        padding: 20px;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
 
-        #snow-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
+    #snow-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+    }
 
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+    }
 
-        header {
-            text-align: center;
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            margin-bottom: 20px;
-            border-bottom: 5px solid var(--accent);
-        }
+    header {
+        text-align: center;
+        background: var(--card-bg);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: var(--shadow);
+        margin-bottom: 20px;
+        border-bottom: 5px solid var(--accent);
+    }
 
-        h1 {
-            margin: 0;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+    h1 {
+        margin: 0;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
 
-        .status-badge {
-            background-color: #27ae60;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 10px;
-        }
+    .status-badge {
+        background-color: #27ae60;
+        color: white;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 10px;
+    }
 
-        .mission-box {
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow);
-        }
+    .mission-box {
+        background: var(--card-bg);
+        padding: 20px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        box-shadow: var(--shadow);
+    }
 
-        .card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 15px;
-            box-shadow: var(--shadow);
-            transition: transform 0.2s;
-            border-left: 5px solid #3498db;
-        }
+    .card {
+        background: var(--card-bg);
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 15px;
+        box-shadow: var(--shadow);
+        transition: transform 0.2s;
+        border-left: 5px solid #3498db;
+    }
 
-        .card:hover {
-            transform: translateY(-2px);
-        }
+    .card:hover {
+        transform: translateY(-2px);
+    }
 
-        .card h3 {
-            margin-top: 0;
-            color: #2980b9;
-        }
+    .card h3 {
+        margin-top: 0;
+        color: #2980b9;
+    }
 
-        .address {
-            font-style: italic;
-            color: #7f8c8d;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            display: block;
-        }
+    .address {
+        font-style: italic;
+        color: #7f8c8d;
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+        display: block;
+    }
 
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            margin-top: 10px;
-            border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: opacity 0.2s, transform 0.1s;
-        }
+    .btn {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: opacity 0.2s, transform 0.1s;
+    }
 
-        .btn:hover {
-            opacity: 0.9;
-        }
+    .btn:hover {
+        opacity: 0.9;
+    }
 
-        .btn:active {
-            transform: scale(0.98);
-        }
+    .btn:active {
+        transform: scale(0.98);
+    }
 
-        .btn:focus-visible {
-            outline: 3px solid #2980b9;
-            outline-offset: 2px;
-        }
+    .btn:focus-visible {
+        outline: 3px solid #2980b9;
+        outline-offset: 2px;
+    }
 
-        .btn-vote {
-            background-color: #3498db;
-            color: white;
-        }
+    .btn-vote {
+        background-color: #3498db;
+        color: white;
+    }
 
-        .btn-copy {
-            background-color: var(--primary);
-            color: white;
-            margin-top: 20px;
-        }
+    .btn-copy {
+        background-color: var(--primary);
+        color: white;
+        margin-top: 20px;
+    }
 
-        .warning-box {
-            background: #fff3cd;
-            color: #856404;
-            border: 1px solid #ffeeba;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 20px;
-            font-size: 0.95rem;
-        }
+    .warning-box {
+        background: #fff3cd;
+        color: #856404;
+        border: 1px solid #ffeeba;
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 20px;
+        font-size: 0.95rem;
+    }
 
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: var(--primary);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: bold;
-            z-index: 1000;
-            opacity: 0;
-            transition: transform 0.3s, opacity 0.3s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            text-align: center;
-            max-width: 90%;
-        }
+    .toast {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%) translateY(100px);
+        background: var(--primary);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: bold;
+        z-index: 1000;
+        opacity: 0;
+        transition: transform 0.3s, opacity 0.3s;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        text-align: center;
+        max-width: 90%;
+    }
 
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-        }
+    .toast.show {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
 
+    .snowflake {
+        position: absolute;
+        color: white;
+        font-size: 1em;
+        animation-name: fall;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        top: -20px;
+    }
+
+    @keyframes fall {
+        to { transform: translateY(calc(100vh + 40px)); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
         .snowflake {
-            position: absolute;
-            color: white;
-            font-size: 1em;
-            animation-name: fall;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-            top: -20px;
+            animation: none;
+            display: none;
         }
+        .card:hover {
+            transform: none;
+        }
+    }
+</style>
+```
 
-        @keyframes fall {
-            to { transform: translateY(calc(100vh + 40px)); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .snowflake {
-                animation: none;
-                display: none;
-            }
-            .card:hover {
-                transform: none;
-            }
-        }
-    </style>
 </head>
 <body>
 
-    <div id="snow-container" aria-hidden="true"></div>
+```
+<div id="snow-container" aria-hidden="true"></div>
 
-    <div class="container">
-        <header>
-            <h1>🛷 Sledding Bulletin</h1>
-            <div class="status-badge" role="status">STATUS: GO FOR LAUNCH 🚀</div>
-        </header>
+<div class="container">
+    <header>
+        <h1>🛷 Sledding Bulletin</h1>
+        <div class="status-badge" role="status">STATUS: GO FOR LAUNCH 🚀</div>
+    </header>
 
-        <main>
-            <div class="mission-box">
-                <p><strong>The Mission:</strong> Get the kiddos (Gideon, Abel & friends) on a hill, get them exhausted, and earn that hot chocolate. ☕️</p>
-                <p>City snow is thin, so we are looking just North. <strong>Tap a button to vote, then paste in the group chat!</strong></p>
-            </div>
+    <main>
+        <div class="mission-box">
+            <p><strong>The Mission:</strong> Get the kiddos (Gideon, Abel & friends) on a hill, get them exhausted, and earn that hot chocolate. ☕️</p>
+            <p>City snow is thin, so we're heading North to the legendary hill. <strong>Tap below if you're in, then paste in the group chat!</strong></p>
+        </div>
 
-            <div class="card">
-                <h3>📍 The Greenwood Giant</h3>
-                <span class="address">Board of Ed • 6901 N Charles St, Towson</span>
-                <p><strong>Why:</strong> The "Legendary" hill. Long, steep, and the best run in the county.</p>
-                <p><em>Note: Watch out for the ditch at the bottom!</em></p>
-                <button class="btn btn-vote" data-location="Greenwood Giant">I'm In: Vote Greenwood ❄️</button>
-            </div>
+        <div class="card">
+            <h3>📍 The Greenwood Giant</h3>
+            <span class="address">Board of Ed • 6901 N Charles St, Towson</span>
+            <p><strong>Why:</strong> The "Legendary" hill. Long, steep, and the best run in the county.</p>
+            <p><em>Note: Watch out for the ditch at the bottom!</em></p>
+            <button class="btn btn-vote" data-location="Greenwood Giant">I'm In! 🛷</button>
+        </div>
 
-            <div class="card">
-                <h3>📍 The Suburban Bowl</h3>
-                <span class="address">Dumbarton Middle • 300 Dumbarton Rd</span>
-                <p><strong>Why:</strong> Great bowl shape, holds snow well. Usually less chaotic and more kid-friendly.</p>
-                <button class="btn btn-vote" data-location="Dumbarton Middle">I'm In: Vote Dumbarton ❄️</button>
-            </div>
+        <div class="warning-box" role="alert">
+            <strong>⚠️ Safety Briefing:</strong> It is A BRICK out there. Temps in the 20s with single-digit wind chills. Bundle the kids up like marshmallows!
+        </div>
 
-            <div class="card">
-                <h3>📍 The Falls Rd Flyer</h3>
-                <span class="address">Poly/Western • 1400 W Cold Spring Ln</span>
-                <p><strong>Why:</strong> Massive, wide hills near Eddie's. Fast runs and closer to home.</p>
-                <button class="btn btn-vote" data-location="Poly/Western">I'm In: Vote Poly/Western ❄️</button>
-            </div>
+        <button class="btn btn-copy" id="copy-btn">📋 Copy Full Invite for Another Group</button>
+    </main>
+</div>
 
-            <div class="warning-box" role="alert">
-                <strong>⚠️ Safety Briefing:</strong> It is A BRICK out there. Temps in the 20s with single-digit wind chills. Bundle the kids up like marshmallows!
-            </div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-            <button class="btn btn-copy" id="copy-btn">📋 Copy Full Invite for Another Group</button>
-        </main>
-    </div>
+<script>
+    // --- TOAST NOTIFICATION ---
+    function showToast(message, duration = 3000) {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.classList.add('show');
+        
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, duration);
+    }
 
-    <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-    <script>
-        // --- TOAST NOTIFICATION ---
-        function showToast(message, duration = 3000) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, duration);
-        }
-
-        // --- COPY LOGIC ---
-        async function copyToClipboard(text, successMessage) {
-            try {
-                if (navigator.clipboard && navigator.clipboard.writeText) {
-                    await navigator.clipboard.writeText(text);
-                    showToast(successMessage);
-                } else {
-                    fallbackCopy(text, successMessage);
-                }
-            } catch (err) {
+    // --- COPY LOGIC ---
+    async function copyToClipboard(text, successMessage) {
+        try {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                await navigator.clipboard.writeText(text);
+                showToast(successMessage);
+            } else {
                 fallbackCopy(text, successMessage);
             }
+        } catch (err) {
+            fallbackCopy(text, successMessage);
         }
+    }
 
-        function fallbackCopy(text, successMessage) {
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            textarea.style.position = 'fixed';
-            textarea.style.opacity = '0';
-            document.body.appendChild(textarea);
-            textarea.focus();
-            textarea.select();
-            
-            try {
-                const success = document.execCommand('copy');
-                showToast(success ? successMessage : "❌ Copy failed — try again");
-            } catch (err) {
-                showToast("❌ Copy failed — try again");
-            }
-            
-            document.body.removeChild(textarea);
+    function fallbackCopy(text, successMessage) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        
+        try {
+            const success = document.execCommand('copy');
+            showToast(success ? successMessage : "❌ Copy failed — try again");
+        } catch (err) {
+            showToast("❌ Copy failed — try again");
         }
+        
+        document.body.removeChild(textarea);
+    }
 
-        // --- VOTE ---
-        function vote(location) {
-            const text = `🛷 I'm in! My vote: ${location}`;
-            copyToClipboard(text, "✅ Copied! Flip back to the chat and paste.");
-        }
+    // --- VOTE ---
+    function vote(location) {
+        const text = `🛷 I'm in for ${location}! See you on the hill!`;
+        copyToClipboard(text, "✅ Copied! Flip back to the chat and paste.");
+    }
 
-        // --- FULL INVITE ---
-        function copyInvite() {
-            const text = `🚨 SLEDDING BULLETIN 🚨
+    // --- FULL INVITE ---
+    function copyInvite() {
+        const text = `🚨 SLEDDING BULLETIN 🚨
+```
 
 Is anyone brave enough to face the freeze? 🥶
 
-I'm taking Gideon & Abel out—we're debating between these three spots:
-
-1. Greenwood Giant (Towson): Long, steep, legendary.
-2. Dumbarton Middle (Towson): Kid-friendly bowl.
-3. Poly/Western (Falls Rd): Steep & close to home.
+I’m taking Gideon & Abel to the legendary Greenwood Giant (Board of Ed hill, 6901 N Charles St in Towson). Long, steep, and the best run in the county!
 
 ⚠️ It is BRICK out there. Bundle up!
 
-Who is in? Text me! 🛷☕️`;
-            
-            copyToClipboard(text, "✅ Invite copied!");
-        }
+Who is in? 🛷☕️`;
 
-        // --- EVENT LISTENERS ---
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.btn-vote').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    vote(this.dataset.location);
-                });
+```
+        copyToClipboard(text, "✅ Invite copied!");
+    }
+
+    // --- EVENT LISTENERS ---
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.btn-vote').forEach(btn => {
+            btn.addEventListener('click', function() {
+                vote(this.dataset.location);
             });
-
-            document.getElementById('copy-btn').addEventListener('click', copyInvite);
-
-            initSnow();
         });
 
-        // --- SNOW ANIMATION ---
-        function initSnow() {
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        document.getElementById('copy-btn').addEventListener('click', copyInvite);
 
-            const container = document.getElementById('snow-container');
-            for (let i = 0; i < 40; i++) {
-                const flake = document.createElement('div');
-                flake.className = 'snowflake';
-                flake.textContent = '❄';
-                resetSnowflake(flake);
-                flake.addEventListener('animationiteration', () => resetSnowflake(flake));
-                container.appendChild(flake);
-            }
-        }
+        initSnow();
+    });
 
-        function resetSnowflake(flake) {
-            flake.style.left = Math.random() * 100 + 'vw';
-            flake.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            flake.style.opacity = Math.random() * 0.7 + 0.3;
-            flake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+    // --- SNOW ANIMATION ---
+    function initSnow() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        const container = document.getElementById('snow-container');
+        for (let i = 0; i < 40; i++) {
+            const flake = document.createElement('div');
+            flake.className = 'snowflake';
+            flake.textContent = '❄';
+            resetSnowflake(flake);
+            flake.addEventListener('animationiteration', () => resetSnowflake(flake));
+            container.appendChild(flake);
         }
-    </script>
+    }
+
+    function resetSnowflake(flake) {
+        flake.style.left = Math.random() * 100 + 'vw';
+        flake.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        flake.style.opacity = Math.random() * 0.7 + 0.3;
+        flake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+    }
+</script>
+```
+
 </body>
 </html>
