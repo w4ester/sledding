@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❄️ Sledding Bulletin 2025</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #e74c3c;
+            --snow: #ecf0f1;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(to bottom, #83a4d4, #b6fbff);
+            color: var(--primary);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Snow Animation Container */
+        #snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            border-bottom: 5px solid var(--accent);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-badge {
+            background-color: #27ae60;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .mission-box {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s;
+            border-left: 5px solid #3498db;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #2980b9;
+        }
+
+        .address {
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: opacity 0.2s;
+        }
+
+        .btn-vote {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .btn-copy {
+            background-color: var(--primary);
+            color: white;
+            margin-top: 20px;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 0.95rem;
+        }
+
+        .snowflake {
+            position: absolute;
+            color: white;
+            font-size: 1em;
+            animation-name: fall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(100vh); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="snow-container"></div>
+
+    <div class="container">
+        <header>
+            <h1>🛷 Sledding Bulletin</h1>
+            <div class="status-badge">STATUS: GO FOR LAUNCH 🚀</div>
+        </header>
+
+        <div class="mission-box">
+            <p><strong>The Mission:</strong> Get the kiddos (Gideon, Abel & friends) on a hill, get them exhausted, and earn that hot chocolate. ☕️</p>
+            <p>City snow is thin, so we are looking just North. <strong>Vote for a spot below!</strong></p>
+        </div>
+
+        <div class="card">
+            <h3>📍 The Greenwood Giant</h3>
+            <span class="address">Board of Ed • 6901 N Charles St, Towson</span>
+            <p><strong>Why:</strong> The "Legendary" hill. Long, steep, and the best run in the county.</p>
+            <p><em>Note: Watch out for the ditch at the bottom!</em></p>
+            <a href="#" class="btn btn-vote" onclick="sendText('The Greenwood Giant')">I'm In: Vote Greenwood ❄️</a>
+        </div>
+
+        <div class="card">
+            <h3>📍 The Suburban Bowl</h3>
+            <span class="address">Dumbarton Middle • 300 Dumbarton Rd</span>
+            <p><strong>Why:</strong> Great bowl shape, holds snow well. Usually less chaotic and more kid-friendly.</p>
+            <a href="#" class="btn btn-vote" onclick="sendText('Dumbarton Middle')">I'm In: Vote Dumbarton ❄️</a>
+        </div>
+
+        <div class="card">
+            <h3>📍 The Falls Rd Flyer</h3>
+            <span class="address">Poly/Western • 1400 W Cold Spring Ln</span>
+            <p><strong>Why:</strong> Massive, wide hills near Eddie's. Fast runs and closer to home.</p>
+            <a href="#" class="btn btn-vote" onclick="sendText('Poly/Western')">I'm In: Vote Poly/Western ❄️</a>
+        </div>
+
+        <div class="warning-box">
+            <strong>⚠️ Safety Briefing:</strong> It is A BRICK out there. Temps in the 20s with single-digit wind chills. Bundle the kids up like marshmallows!
+        </div>
+
+        <button class="btn btn-copy" onclick="copyInvite()">📋 Copy Invite Text for Group Chat</button>
+
+    </div>
+
+    <script>
+        // --- CONFIGURATION ---
+        // ENTER YOUR PHONE NUMBER HERE inside the quotes (e.g. "14105550199")
+        // If left blank, it will just open the SMS app without a recipient.
+        const HOST_PHONE_NUMBER = ""; 
+        
+        // --- SMS LOGIC ---
+        function sendText(location) {
+            const body = `I'm in for sledding! I vote for ${location}.`;
+            // Detect iOS vs Android for correct SMS link formatting
+            const ua = navigator.userAgent.toLowerCase();
+            const separator = (ua.indexOf("iphone") > -1 || ua.indexOf("ipad") > -1) ? "&" : "?";
+            
+            window.location.href = `sms:${HOST_PHONE_NUMBER}${separator}body=${encodeURIComponent(body)}`;
+        }
+
+        // --- COPY TO CLIPBOARD LOGIC ---
+        function copyInvite() {
+            const text = `🚨 SLEDDING BULLETIN 🚨\n\nIs anyone brave enough to face the freeze? 🥶\n\nI’m taking Gideon & Abel out—we're debating between these three spots:\n\n1. Greenwood Giant (Towson): Long, steep, legendary.\n2. Dumbarton Middle (Towson): Kid-friendly bowl.\n3. Poly/Western (Falls Rd): Steep & close to home.\n\n⚠️ It is BRICK out there. Bundle up!\n\nWho is in? Text me! 🛷☕️`;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Invite copied! You can now paste it into your group chat.");
+            });
+        }
+
+        // --- SNOW ANIMATION ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const snowContainer = document.getElementById("snow-container");
+            const snowflakeCount = 50;
+
+            for (let i = 0; i < snowflakeCount; i++) {
+                let snowflake = document.createElement("div");
+                snowflake.className = "snowflake";
+                snowflake.innerHTML = "❄";
+                
+                // Random positioning and timing
+                snowflake.style.left = Math.random() * 100 + "vw";
+                snowflake.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                snowflake.style.opacity = Math.random();
+                snowflake.style.fontSize = (Math.random() * 10 + 10) + "px";
+                
+                snowContainer.appendChild(snowflake);
+            }
+        });
+    </script>
+</body>
+</html>
